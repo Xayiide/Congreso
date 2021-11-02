@@ -1,6 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 
+from Votacion.Votacion import Votacion
 
 class VotStats:
     file     = None

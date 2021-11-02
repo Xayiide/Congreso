@@ -1,4 +1,5 @@
 
+from GrupoParlamentario.GrupoParl import GrupoParl
 
 class Votacion:
     data      = None
