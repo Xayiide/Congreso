@@ -12,10 +12,11 @@ class Votacion:
 
     resultado = "" # "Si" o "No"
     presentes = 0
-    aFavor    = 0
-    enContra  = 0
-    absten    = 0
-    noVota    = 0
+
+    votosAgregados = {'Sí'          : 0,
+                      'No'          : 0,
+                      'Abstención'  : 0,
+                      'No vota'     : 0}
 
     grupos    = {} # nombre : objeto
 
@@ -30,14 +31,14 @@ class Votacion:
 
         self.resultado = data['totales']['asentimiento']
         self.presentes = data['totales']['presentes']
-        self.aFavor    = data['totales']['afavor']
-        self.enContra  = data['totales']['enContra']
-        self.absten    = data['totales']['abstenciones']
-        self.noVota    = data['totales']['noVotan']
+
+        self.votosAgregados['Sí']         = data['totales']['afavor']
+        self.votosAgregados['No']         = data['totales']['enContra']
+        self.votosAgregados['Abstención'] = data['totales']['abstenciones']
+        self.votosAgregados['No vota']    = data['totales']['noVotan']
 
         self.parseVot()
-        for grupo in self.grupos.values():
-            grupo.imprimir()
+
 
     def parseVot(self):
         for voto in self.data['votaciones']:
