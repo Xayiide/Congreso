@@ -51,13 +51,13 @@ class VotStats:
             grupo = self.votacion.grupos[p]
 
 
-    
+
     def votNoPorGrupo(self):
         pass
 
     def votAbsPorGrupo(self):
         pass
-    
+
     def votNovPorGrupo(self):
         pass
 
