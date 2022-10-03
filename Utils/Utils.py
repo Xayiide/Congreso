@@ -6,17 +6,22 @@ resColors = {'Sí'        : '#6EEB83',
              'Abstención': '#767676',
              'No vota'   : '#DCDCDC'}
 
-# Provisional
-gpColors = {'GP'   : '#1D84CE',
-            'GS'   : '#DC0000',
-            'GVOX' : '#63BE21',
-            'GPlu' : '#DCDCDC',
-            'GCs'  : '#EB6109'}
+gpColors = {'GP'           : '#1D84CE',
+            'GVOX'         : '#63BE21',
+            'GCs'          : '#EB6109',
+            'GMx'          : '#818181',
+            'GS'           : '#DC0000',
+            'GCUP-EC-GC'   : '#663277',
+            'GPlu'         : '#515151',
+            'GEH Bildu'    : '#91A613',
+            'GR'           : '#F3B218',
+            'GV (EAJ-PNV)' : '#3B8B3B',
+            'unk'          : '#222222'}
 
 
 def lbcFilter(agregados, color=None):
     palette = resColors
-    if color == 'partido':
+    if color == 'partidos':
         palette = gpColors
 
     labels, sizes, colors = [], [], []
@@ -27,7 +32,10 @@ def lbcFilter(agregados, color=None):
             sizes.append(agregados[voto])
 
     for i, auxlabel in enumerate(auxlabels):
-        colors.append(palette[auxlabel])
+        try:
+            colors.append(palette[auxlabel])
+        except:
+            colors.append(palette['unk'])
         num = agregados[auxlabel]
         labels.append(str(auxlabel + " [" + str(num) + "]"))
 
