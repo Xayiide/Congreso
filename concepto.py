@@ -18,9 +18,18 @@ for periodo in periodos:
 
 paginas_periodos = []
 
+print(urls)
+
 for url in urls:
     paginas_periodos.append(requests.get(base_url + url))
 
-elegida = paginas_periodos[4]
-sopa    = bs(elegida.text, 'html.parser')
+for pagina in paginas_periodos:
+    sopa = bs(pagina.text, 'html.parser')
+    tabla = sopa.find('table', {'class':'t_no_border'})
+    print(pagina.url)
+    tbody = tabla.find('tbody')
+    filas = tbody.findAll('tr')
+    for fila in filas:
+        print(dir(fila))
+
 
